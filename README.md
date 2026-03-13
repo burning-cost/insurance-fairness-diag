@@ -143,3 +143,11 @@ MIT. See [LICENSE](LICENSE).
 ---
 
 Built by [Burning Cost](https://github.com/burning-cost). Practitioner tools for UK insurance pricing teams.
+
+## Performance
+
+No formal benchmark yet. The main computational cost is the Owen 2014 Shapley estimator, which runs n_perms × n_factors model evaluations. With n_perms=256 and 10 rating factors, expect 256 × 10 = 2,560 surrogate model predictions. On a subsample of 10,000 policies (the default), this takes 5–30 seconds depending on surrogate model complexity. The surrogate is a RandomForestRegressor on D = h - h*, which is fast to predict.
+
+The D_proxy scalar computation itself is a single matrix operation over subsample_n rows — under 1 second. Per-policyholder local scores scale linearly with portfolio size.
+
+This library adds value over a manual fairness review when: the portfolio is large enough that visual inspection of A/E by group is insufficient, the number of rating factors is high enough that informal proxy analysis misses interactions, or a documented audit trail with confidence intervals is required for regulatory file review.
