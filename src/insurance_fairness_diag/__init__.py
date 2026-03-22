@@ -80,7 +80,12 @@ from insurance_fairness_diag._utils import (
     DEFAULT_PHI_THRESHOLDS,
 )
 
-__version__ = "0.1.0"
+from importlib.metadata import version, PackageNotFoundError
+
+try:
+    __version__ = version("insurance-fairness-diag")
+except PackageNotFoundError:
+    __version__ = "0.0.0"  # not installed
 
 __all__ = [
     # Main API
