@@ -1,3 +1,5 @@
+⚠️ **This package has been merged into [`insurance-fairness`](https://github.com/burning-cost/insurance-fairness).** This repository is archived. Install `insurance-fairness` instead.
+
 # insurance-fairness-diag
 
 Proxy discrimination diagnostics for UK personal lines insurance pricing models.
